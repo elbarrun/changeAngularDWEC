@@ -6,8 +6,10 @@ import { SigninComponent } from './components/signin/signin.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { AuthInterceptor } from './shared/auth-interceptor.service';
+import { PeticionModule } from './peticion/peticion.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,6 +23,7 @@ import { AuthInterceptor } from './shared/auth-interceptor.service';
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
+    PeticionModule
   ],
   providers: [
     {
