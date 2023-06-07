@@ -14,9 +14,12 @@ export class TokenService {
   getToken() {
     return localStorage.getItem('auth_token');
   }
-  // Verify the token
-  isValidToken() {
-    const token = this.getToken();
+  tokenGetter() {
+    return localStorage.getItem('auth_token');
+    }
+      // Verify the token
+  isValidToken(): boolean | undefined {
+    const token = this.tokenGetter();
     if (token) {
       const payload = this.payload(token);
       if (payload) {

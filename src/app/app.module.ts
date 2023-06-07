@@ -10,12 +10,20 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { AuthInterceptor } from './shared/auth-interceptor.service';
 import { PeticionModule } from './peticion/peticion.module';
-@NgModule({
+import {JwtHelperService, JWT_OPTIONS} from '@auth0/angular-jwt';
+import {JwtModule} from '@auth0/angular-jwt';
+import { PeticionService } from './peticion/peticion.service';
+
+export function tokenGetter(){
+  return localStorage.getItem("auth_token");
+}
+2;@NgModule({
   declarations: [
     AppComponent,
     SigninComponent,
     SignupComponent,
     UserProfileComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -23,7 +31,14 @@ import { PeticionModule } from './peticion/peticion.module';
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
-    PeticionModule
+    PeticionModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        allowedDomains:["example.com"],
+        disallowedRoutes:["http://example.com/examplebadroute/"],
+      },
+    }),
   ],
   providers: [
     {
@@ -31,6 +46,10 @@ import { PeticionModule } from './peticion/peticion.module';
       useClass: AuthInterceptor,
       multi: true,
     },
+
+    {provide: JWT_OPTIONS, useValue: JWT_OPTIONS},
+    JwtHelperService,
+    PeticionService
   ],
   bootstrap: [AppComponent],
 })

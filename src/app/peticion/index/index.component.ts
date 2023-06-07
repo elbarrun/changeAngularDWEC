@@ -1,45 +1,42 @@
 import { Component, OnInit } from '@angular/core';
 import { PeticionService } from '../peticion.service';
-import { Peticion } from '../peticion';
-      
+
 @Component({
   selector: 'app-index',
   templateUrl: './index.component.html',
   styleUrls: ['./index.component.css']
 })
 export class IndexComponent implements OnInit {
-      
-  peticiones: Peticion[] = [];
-    
-  /*------------------------------------------
-  --------------------------------------------
-  Created constructor
-  --------------------------------------------
-  --------------------------------------------*/
-  constructor(public peticionService: PeticionService) { }
-    
-  /**
-   * Write code on Method
-   *
-   * @return response()
-   */
+
+  imgURL = 'http://localhost:8000/storage/';  // Define imgURL aquí
+  peticiones: any = [];
+
+  constructor(private peticionService: PeticionService) { }
+
   ngOnInit(): void {
-    this.peticionService.getAll().subscribe((data: Peticion[])=>{
-      this.peticiones = data;
-      console.log(this.peticiones);
-    })  
+    this.getAllPeticiones();
   }
-    
-  /**
-   * Write code on Method
-   *
-   * @return response()
-   */
-  deletePeticion(id:number){
-    this.peticionService.delete(id).subscribe(res => {
-         this.peticiones = this.peticiones.filter(item => item.id !== id);
-         console.log('Peticion deleted successfully!');
-    })
+
+  getAllPeticiones() {
+    this.peticionService.getAll().subscribe(
+      (res) => {
+        this.peticiones = res;
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
   }
-    
+
+  deletePeticion(id: number) {
+    this.peticionService.delete(id).subscribe(
+      (res) => {
+        console.log('Petición eliminada exitosamente');
+        this.getAllPeticiones();  // Refresca la lista de peticiones después de eliminar una
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+  }
 }

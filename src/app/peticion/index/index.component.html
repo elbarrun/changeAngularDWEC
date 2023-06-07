@@ -1,8 +1,8 @@
 <div class="container mt-5">
     <h1>Angular 13 CRUD Example - ItSolutionStuff.com</h1>
-  
+
     <a href="#" routerLink="/peticion/create/" class="btn btn-success">Create New Post</a>
-    
+
     <table class="table table-bordered">
       <tr>
         <th>ID</th>
@@ -10,6 +10,7 @@
         <th>descripcion</th>
         <th>destinatario</th>
         <th>categoria_id</th>
+        <th>file</th>
         <th width="220px">Action</th>
       </tr>
       <tr *ngFor="let peticion of peticiones">
@@ -18,6 +19,7 @@
         <td>{{ peticion.descripcion }}</td>
         <td>{{ peticion.destinatario }}</td>
         <td>{{ peticion.categoria_id }}</td>
+        <img src="{{imgURL}}/{{peticion.file}}" />
         <td>
           <a href="#" [routerLink]="['/peticion/', peticion.id, 'view']" class="btn btn-info">View</a>
           <a href="#" [routerLink]="['/peticion/', peticion.id, 'edit']" class="btn btn-primary">Edit</a>

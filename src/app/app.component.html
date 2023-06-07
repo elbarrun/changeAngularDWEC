@@ -1,12 +1,55 @@
-<div class="d-flex flex-column flex-md-row mb-5 align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm fixed-top">
-  <h5 class="my-0 mr-md-auto font-weight-normal">change.org</h5>
-  <nav class="my-2 my-md-0 mr-md-3">
-    <a class="p-2 text-dark" routerLink="/profile" *ngIf="isSignedIn">User Profile</a>
-    <a class="p-2 text-dark" *ngIf="!isSignedIn" routerLink="/login">Log in</a>
-    <a class="p-2 text-dark" routerLink="/register">Register</a>
-    <a class="p-2 text-dark" routerLink="/peticion/index">Inicia una peticion</a>
 
-  </nav>
-  <button class="btn btn-outline-primary" (click)="signOut()" *ngIf="isSignedIn">Log out</button>
+<nav class="navbar navbar-expand-xl navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarLight"
+      aria-controls="navbarLight" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse show" id="navbarLight">
+      <ul class="navbar-nav me-auto mb-2 mb-xl-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="landing.html" style="color: red;"><strong>change.org</strong> </a>
+        </li>
+        <li class="nav-item">
+          <a class="p-2 text-dark nav-link active" routerLink="/peticion/index">Inicia una peticion</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="ficha_peticion.html" style="color: red;">Mis peticiones</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="list_peticions.html" style="color: red;">Más peticiones</a>
+        </li>
+        <li class="nav-item">
+          <a class="p-2 text-dark" *ngIf="!isSignedIn" routerLink="/register">Register</a>
+        </li>
+        <li class="nav-item">
+          <a class="p-2 text-dark" *ngIf="!isSignedIn" routerLink="/login">Log in</a>        </li>
+          <li class="nav-item">
+            <a class="p-2 text-dark" *ngIf="isSignedIn" routerLink="/">Log out</a>        </li>
+      </ul>
+
+
+
+
+
+
+    </div>
+  </div>
+</nav>d
+<div class="card mx-auto">
+  <div class="card-body">
+    <h5 class="card-title text-center">El Rey Jorge</h5>
+    <p class="card-text">Hola, me llamo JORGE, y me falto sangre al nacer, y eso me ocasionó parálisis cerebral, mi hermano gemelo (Cristian) no tuvo tanta suerte y murió.
+      Después de 17 días en la uci luchando por vivir , lo estoy consiguiendo, pero necesito mucha fisioterapia y diversos aparatos ortopédicos. Actualmente mis papis me llevan cada 6 meses a hacer un tratamiento especial y muy costoso en Madrid, para ver si consigo poder andar yo sólito. Todos los meses mis papas han de pagar las terapias que son muy costosas.
+      Ojalá pueda crecer siendo tan feliz como el resto de los niños de mi edad a pesar de mis limitaciones.
+      Muchas gracias por tu Ayuda, Jorge.</p>
+    <p class="card-text"><small class="text-muted">Dona desde 1€.</small></p>
+    <a class="text-danger text-center" href="#" data-bs-toggle="tooltip" title="¡Muchas gracias amig@!">Donar </a>
+  </div>
+  <img src="abuelo.jpg" class="card-img-bottom w-25 mb-4 mx-auto" alt="card-img-bottom">
 </div>
+
+
 <router-outlet></router-outlet>

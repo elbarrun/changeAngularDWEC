@@ -1,28 +1,28 @@
 <div class="container mt-5">
     <h1>Create New Peticion</h1>
-  
+
     <a href="#" routerLink="/peticion/create" class="btn btn-primary">Back</a>
-        
+
     <form [formGroup]="form" (ngSubmit)="submit()">
-  
+
         <div class="form-group">
             <label for="titulo">titulo:</label>
-            <input 
+            <input
                 formControlName="titulo"
-                id="titulo" 
-                type="text" 
+                id="titulo"
+                type="text"
                 class="form-control">
             <div *ngIf="f['titulo'].touched && f['titulo'].invalid" class="alert alert-danger">
                 <div *ngIf="f['titulo'].errors && f['titulo'].errors['required']">titulo is required.</div>
             </div>
         </div>
-  
+
         <div class="form-group">
             <label for="descripcion">descripcion</label>
-            <textarea 
+            <textarea
                 formControlName="descripcion"
-                id="descripcion" 
-                type="text" 
+                id="descripcion"
+                type="text"
                 class="form-control">
             </textarea>
             <div *ngIf="f['descripcion'].touched && f['descripcion'].invalid" class="alert alert-danger">
@@ -32,10 +32,10 @@
 
         <div class="form-group">
             <label for="destinatario">destinatario</label>
-            <textarea 
+            <textarea
                 formControlName="destinatario"
-                id="destinatario" 
-                type="text" 
+                id="destinatario"
+                type="text"
                 class="form-control">
             </textarea>
             <div *ngIf="f['destinatario'].touched && f['destinatario'].invalid" class="alert alert-danger">
@@ -45,17 +45,24 @@
 
         <div class="form-group">
             <label for="categoria_id">categoria_id</label>
-            <textarea 
+            <textarea
                 formControlName="categoria_id"
-                id="categoria_id" 
-                type="text" 
+                id="categoria_id"
+                type="text"
                 class="form-control">
             </textarea>
             <div *ngIf="f['categoria_id'].touched && f['categoria_id'].invalid" class="alert alert-danger">
                 <div *ngIf="f['categoria_id'].errors && f['categoria_id'].errors['required']">categoria_id is required.</div>
             </div>
         </div>
-  
+
+        <div class="form-group">
+          <label class="control-label">Imagen</label>
+      <input (change)="uploadFile($event)" type="file" class="form-control form-control-line" style="color: blue">
+          </div>
+
+
+
         <button class="btn btn-primary" type="submit" [disabled]="!form.valid">Submit</button>
     </form>
-</div>
+  </div>

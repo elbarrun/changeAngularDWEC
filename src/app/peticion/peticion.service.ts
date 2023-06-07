@@ -26,8 +26,8 @@ export class PeticionService {
       )
   }
 
-  create(peticion: any): Observable<any> {
-    return this.httpClient.post(this.apiURL + '/peticiones/create', JSON.stringify(peticion), this.httpOptions)
+  create(peticion: FormData): Observable<any> {
+    return this.httpClient.post(this.apiURL + '/peticiones/create', peticion, this.httpOptions)
       .pipe(
         catchError(this.errorHandler)
       )
